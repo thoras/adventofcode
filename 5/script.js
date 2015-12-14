@@ -4,10 +4,6 @@ var input = fs.readFileSync('./input.txt', 'utf-8').trim();
 
 var lines = input.split(/\s+/);
 
-var vowels = 'aeiou'.split('');
-
-var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-
 var blacklist = [
   'ab',
   'cd',
@@ -16,10 +12,8 @@ var blacklist = [
 ];
 
 var regexp = {
-  vowels: new RegExp('[' + vowels.join('') + ']', 'g'),
-  double: new RegExp('(' + alphabet.map(function (char) {
-    return char + char;
-  }).join(')|(') + ')', 'g'),
+  vowels: new RegExp('[aeiou]', 'g'),
+  double: new RegExp('([a-z])\\1', 'g'),
   blacklist: new RegExp('(' + blacklist.join(')|(') + ')', 'g')
 };
 
